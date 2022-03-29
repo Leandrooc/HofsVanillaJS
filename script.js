@@ -67,12 +67,43 @@ const every = (array, callback) => {
 
 //
 
-some(ObjectForTests, (callbackObj)); // RETURN TRUE
+some(ObjectForTests, callbackObj); // RETURN TRUE
 some(ObjectForTests, (obj) => obj.age > 20); // RETURN FALSE
 
 every(arrayForTests, callback2); // RETURN  FALSE
 
 every(arrayForTests, (arrayItem) => arrayItem >= 1); // RETURN  TRUE
 every(arrayForTests, (arrayItem) => arrayItem > 1); // RETURN  FALSE
+
+//
+
+// Map
+
+const map = (array, callback) => {
+  let newArray = [];
+
+  for (let i = 0; i < array.length; i += 1) {
+    const map = callback(array[i]);
+    newArray = [...newArray, map]
+  }
+  return newArray;
+}
+
+const callbackCreateOBJ = (itemArray) => ({
+  value: itemArray,
+  double: itemArray * 2,
+})
+
+map(arrayForTests, (itemArray) => itemArray * 2) // RETURN [10, 2, 6, 8, 104, 46, 30, 4]
+
+map(arrayForTests, callbackCreateOBJ);
+// RETURN [ { value: 5, double: 10 },
+//   { value: 1, double: 2 },
+//   { value: 3, double: 6 },
+//   { value: 4, double: 8 },
+//   { value: 52, double: 104 },
+//   { value: 23, double: 46 },
+//   { value: 15, double: 30 },
+//   { value: 2, double: 4 } ]
 
 //
