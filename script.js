@@ -21,23 +21,21 @@ const callback = (itemArray) => itemArray < 20
 const callback2 = (itemArray) => itemArray > 6;
 const callbackObj = (itemArray) => itemArray.age > 3;
 
-filter(arrayForTests, callback);
-filter(arrayForTests, callback2);
-filter(ObjectForTests, callbackObj);
+filter(arrayForTests, callback); // RETURN [ 5, 1, 3, 4, 15, 2 ]
+filter(arrayForTests, callback2); // RETURN [ 52, 23, 15 ]
+filter(ObjectForTests, callbackObj); // RETURN [ { age: 6 }, { age: 5 } ]
 
 //
 
 // Find
 
 const Find = (array, callback) => {
-  let newArray = [];
-
   for (let i = 0; i < array.length; i += 1) {
-      if (callback(array[i])) {
-          newArray = [...newArray, array[i]]
-      }
+      if (callback(array[i])) return array[i];
   }
-  return newArray;
 }
+
+Find(ObjectForTests, callbackObj); // RETURN { age: 6 }
+Find(arrayForTests, callback2); // RETURN 52
 
 //
