@@ -107,3 +107,49 @@ map(arrayForTests, callbackCreateOBJ);
 //   { value: 2, double: 4 } ]
 
 //
+
+// Sort
+
+const sort = (array, order) => {
+  let newArray = [];
+  let bigger = 0;
+
+  const functionDiff = (arrayY) => {
+    if (newArray.length === 0) return false;
+    for (let arr = 0; arr < newArray.length; arr += 1) {
+      if (newArray[arr] === arrayY) return true; 
+    }
+  }
+
+  for (let i = 0; i < array.length; i+= 1) {
+
+    for (let y = 0; y < array.length; y += 1) {
+
+      if (array[y] > bigger && !functionDiff(array[y])) bigger = array[y];
+
+      if (y === 7) {
+        newArray = [...newArray, bigger]
+        bigger = 0;
+      }
+
+    }
+  }
+
+  if (!order) throw new Error('Use "ASC" or "DESC" order')
+  if (order === "DESC") return newArray;
+  if (order === "ASC") {
+    let newArrayASC = [];
+    for (let asc = newArray.length - 1; asc >= 0; asc -= 1) {
+      newArrayASC = [...newArrayASC, newArray[asc]];
+    }
+    return newArrayASC
+  }
+
+}
+
+//
+
+sort(arrayForTests, "ASC") // RETURN [1,  2,  3,  4, 5, 15, 23, 52]
+sort(arrayForTests, "DESC") // RETURN [52, 23, 15, 5, 4,  3,  2, 1]
+
+//
