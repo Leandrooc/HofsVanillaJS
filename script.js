@@ -153,3 +153,28 @@ sort(arrayForTests, "ASC") // RETURN [1,  2,  3,  4, 5, 15, 23, 52]
 sort(arrayForTests, "DESC") // RETURN [52, 23, 15, 5, 4,  3,  2, 1]
 
 //
+
+// forEach
+
+const forEach = (array, callback) => {
+  for (let i = 0; i < array.length; i += 1) {
+    callback(array[i])
+  }
+}
+
+forEach(arrayForTests, (itemArray) => console.log(itemArray)); // ForEach always return undefined;
+// console =>
+// 5
+// 1
+// 3
+// 4
+// 52
+// 23
+// 15
+// 2
+// and RETURN UNDEFINED;
+
+forEach(arrayForTests, (itemArray) => itemArray * 2) // RETURN undefined;
+forEach(arrayForTests, (itemArray) => itemArray) // RETURN undefined;
+
+//
