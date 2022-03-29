@@ -46,3 +46,33 @@ Find(arrayForTests, callback2); // RETURN 52
 //
 
 // Some and Every;
+
+const some = (array, callback) => {
+  for (let i = 0; i < array.length; i += 1) {
+      if (callback(array[i])) {
+          return true;
+      }
+  }
+  return false;
+}
+
+const every = (array, callback) => {
+  for (let i = 0; i < array.length; i += 1) {
+      if (!callback(array[i])) {
+          return false;
+      }
+  }
+  return true;
+}
+
+//
+
+some(ObjectForTests, (callbackObj)); // RETURN TRUE
+some(ObjectForTests, (obj) => obj.age > 20); // RETURN FALSE
+
+every(arrayForTests, callback2); // RETURN  FALSE
+
+every(arrayForTests, (arrayItem) => arrayItem >= 1); // RETURN  TRUE
+every(arrayForTests, (arrayItem) => arrayItem > 1); // RETURN  FALSE
+
+//
