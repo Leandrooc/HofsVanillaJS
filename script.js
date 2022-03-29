@@ -178,3 +178,5 @@ forEach(arrayForTests, (itemArray) => itemArray * 2) // RETURN undefined;
 forEach(arrayForTests, (itemArray) => itemArray) // RETURN undefined;
 
 //
+
+// Reduce
